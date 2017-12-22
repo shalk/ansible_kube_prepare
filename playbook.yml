@@ -10,3 +10,11 @@
     copy:
       src: /etc/hosts
       dest: /etc/hosts
+  - name: disable swap
+    command: swapoff --all
+  - name: comment swap
+    lineinfile: 
+      path: /etc/fstab
+      regexp: '^(\/\S+\s+swap\s+.*)$'
+      line: '# \1'
+      backrefs: yes
