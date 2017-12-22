@@ -2,6 +2,11 @@
 - hosts: dnode
   tasks: 
   - name: disable firewall
-    service: name=firewalld state=stopped enabled=no
+    service:
+      name: firewalld
+      state: stopped
+      enabled: no
   - name: copy hostfile
-    copy: src=/etc/hosts dest=/etc/hosts
+    copy:
+      src: /etc/hosts
+      dest: /etc/hosts
